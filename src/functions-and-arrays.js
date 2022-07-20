@@ -1,42 +1,129 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
-
-
+function maxOfTwoNumbers(a,b) {
+  return (a > b) ? a : b
+}
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(x){
+  if (!!x && x.length !=0){
+  let xMostChar = 0;
+  x.map((word) => {
+    xMostChar = Math.max(xMostChar, word.length)
+  });
+  result = x.filter(word=> word.length == xMostChar)
+  return result[0]
+} else {
+  return null
+  }
+}
 
-
+console.log(findLongestWord(words));
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
-
-function sumNumbers() {}
-
-
+function sumNumbers(x) {
+ let n = 0
+ x.forEach((number, i) => {
+  n += x[i]
+})
+return n
+}
+console.log(sumNumbers(numbers));
 
 // Iteration #3.1 Bonus:
-function sum() {}
+// return 0 if receives an empty array
+//return 0 if all elements are 0
+// return sum of mixed strings, booleans and numbers
+// return error when unsupported data type
 
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+function sum(listOfElements) {
+  if (listOfElements.length === 0) {
+    return 0
+  }
+  let elementCount = 0
+  listOfElements.forEach((item, i) => {
+    if ( typeof item === 'number' ) {
+      elementCount += item
+    } else if ( typeof item === 'string' ) {
+      elementCount += item.length
+    } else if ( typeof item === 'boolean' ) {
+      if ( item === true ) {
+        elementCount += 1
+      }
+    } else if ( item instanceof Object || typeof item === 'array' ){
+      throw new Error;
+    }
+  })
+  return elementCount
+}
+console.log(sum(mixedArr));
 
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
-
-function averageNumbers() {}
+function averageNumbers(numbers) {
+  if (numbers.length === 0) {
+    return null
+  }
+  let numberOfElements = numbers.length
+  let sumOfElements = 0
+  numbers.forEach((number, i) => {
+   sumOfElements += numbers[i]
+  })
+  let avg = sumOfElements / numberOfElements
+  return avg
+ }
 
 
 // Level 2: Array of strings
-const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+// Calculate the average of an array of strings
+// should declare a function named averageWordLength
+// should return null if receives an empty array when called
+// should return the average of a one-element array
+// should return the average of a the array
 
-function averageWordLength() { }
+const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+function averageWordLength(arrayOfStrings) { 
+  if (arrayOfStrings.length === 0) {
+    return null
+  }
+  let numberOfElements = arrayOfStrings.length
+  let numberOfCharecters = 0
+  arrayOfStrings.forEach((string, i) => {
+    numberOfCharecters += string.length
+  })
+  let avg = numberOfCharecters / numberOfElements
+  return avg
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+// Bonus: Calculate the average of a mixed elements array
+// should declare a function named avg
+// should return null if receives an empty array when called
+// should return the average of the array
 
+const elementsArr = [6, 12, 'miami', 1, 'barca', '200', 'lisboa', 8, 10]
+function avg(arrayOfElements) {
+  if (arrayOfElements.length === 0) {
+    return null
+  }
+  let numberOfElements = 0
+  arrayOfElements.forEach((element, i) => {
+    numberOfElements += arrayOfElements.length
+  })
+  return numberOfElements
+}
+
+// should declare a function named uniquifyArray
+// should return null if receives an empty array when called
+// should return the correct uniqified array when an array of the same elements passed as argument
+// should return the same array when no element is repeated
+// should return the uniquified array
 // Iteration #5: Unique arrays
 const wordsUnique = [
   'crab',
@@ -52,8 +139,13 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(listOfStrings) {
+  if (listOfStrings.length === 0) {
+    return null
+  }
+  let uniquify = listOfStrings.filter((v, i, a) => a.indexOf(v) === i);
+  return uniquify
+}
 
 
 // Iteration #6: Find elements
